@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
   appBar: {
     position: 'relative',
   },
-  toolbar: theme.mixins.toolbar,
+   //toolbar: theme.mixins.toolbar,
   layout: {
     marginTop: '5%',
     width: 'auto',

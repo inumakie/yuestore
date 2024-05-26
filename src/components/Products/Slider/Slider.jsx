@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Typography} from '@material-ui/core';
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { Typography} from '@mui/material';
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { sliderItems } from './slider-data';
 import useStyles from './styles';
 

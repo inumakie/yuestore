@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Badge, Typography } from '@material-ui/core';
-import { ShoppingCart, Search } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton, Badge, Typography } from '@mui/material';
+import { ShoppingCart, Search } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import logo from '../../assets/logo.jpg';

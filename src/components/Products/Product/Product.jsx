@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
-import { AddShoppingCart } from '@material-ui/icons';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@mui/material';
+import { AddShoppingCart } from '@mui/icons-material';
 import useStyles from './styles';
 
 const Product = ( {product, handleAddToCart, handleSelectProduct} ) => {

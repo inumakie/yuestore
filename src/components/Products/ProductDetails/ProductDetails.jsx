@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Typography, Grid, Card, CardMedia, CardContent, CardActions, Button } from '@material-ui/core';
+import { Container, Typography, Grid, Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { AddShoppingCart } from '@material-ui/icons';
+import { AddShoppingCart } from '@mui/icons-material';
 import useStyles from './styles';
 
 const ProductDetails = ( {selectedProduct, handleAddToCart, handleUpdateCartQty, from} ) => {

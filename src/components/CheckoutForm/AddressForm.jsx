@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
-import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@mui/material';
 import FormInput from './FormInput';
 import { commerce } from '../../lib/commerce';
 import useStyles from './styles';

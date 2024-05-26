@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import Product from './Product/Product';
 import Slider from './Slider/Slider';
 import useStyles from './styles';

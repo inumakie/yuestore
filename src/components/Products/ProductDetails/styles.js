@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
+  //toolbar: theme.mixins.toolbar,
 
   container: {
     background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(229,208,255,1) 100%)',
