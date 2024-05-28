@@ -59,6 +59,14 @@ const PaymentForm = ( {checkoutToken, backStep, nextStep, shippingData, handleCa
          		<form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
             	<CardElement style={{background: 'lightblue'}}/>
            	 	<br /> <br />
+					<p style={{
+					textAlign: 'center',
+					borderRadius: '10px',
+					backgroundColor: '#f3e5f5', // Very light purple
+					padding: '15px',
+					margin: '10px 0'
+				}}>
+					Test using '4242 4242 4242 4242' for card number, any future month/year value for expiration date and any five-digit number as ZIP code :)</p>
             	<div style={{ display: 'flex', justifyContent: 'space-between' }}>
              		<Button variant="outlined" onClick={backStep}>Back</Button>
              		<Button type="submit" variant="contained" disabled={!stripe} color="primary">

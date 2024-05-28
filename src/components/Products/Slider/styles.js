@@ -74,12 +74,19 @@ export default makeStyles((theme) => ({
   itemTitle: {
     fontFamily: "'Poppins', sans-serif",
     fontWeight: 'bold',
-    color: 'white'
+    color: 'white',
   },
   itemDesc: {
     fontFamily: "'Poppins', sans-serif",
     fontWeight: '300',
     color: 'white'
-  }
+  },
+
+	spinner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+},
 
 }));

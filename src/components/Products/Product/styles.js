@@ -29,6 +29,7 @@ export default makeStyles( () => ({
 		fontSize: '20px',
 		textAlign: 'center',
 		textDecoration: 'none',
+		marginTop: '1rem',
     	overflow: 'hidden',
     	display: '-webkit-box',
     	'-webkit-line-clamp': '4',
@@ -38,6 +39,13 @@ export default makeStyles( () => ({
 	productPrice: {
 		color: 'green',
 		paddingLeft: '10px'
-	}
+	},
+
+	spinner: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+    },
 
 }));
