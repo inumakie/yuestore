@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-
   container: {
     backgroundColor: 'violet',
     width: '100%',
@@ -10,9 +9,9 @@ export default makeStyles((theme) => ({
     position: 'relative',
     overflow: 'hidden',
     marginBottom: '20px',
-    '@media (max-width: 1023px)' : {
-      display: 'none'
-    }
+    '@media (max-width: 1023px)': {
+      display: 'none',
+    },
   },
   arrow: {
     width: '50px',
@@ -28,14 +27,18 @@ export default makeStyles((theme) => ({
     margin: 'auto',
     cursor: 'pointer',
     opacity: '0.5',
-    zIndex: '2'
+    zIndex: '2',
+    '&:hover': {
+			transform: 'scale(1.1)',
+			transition: 'transform 0.2s ease-in-out',
+		  },
   },
   wrapper: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
     transition: 'all 1.5s ease',
-    transform: 'translateX(-100vw)'
+    transform: 'translateX(-100vw)',
   },
   slide: {
     display: 'flex',
@@ -43,16 +46,16 @@ export default makeStyles((theme) => ({
     width: '100vw',
     height: '100vh',
     alignItems: 'center',
-    '&:hover' : {
-      cursor: 'pointer'
-    }
-  }, 
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
   imageContainer: {
     width: '400px',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-  },   
+    alignItems: 'center',
+  },
   imageCircle: {
     width: '300px',
     height: '300px',
@@ -61,15 +64,15 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: '50%',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   img: {
-    height: '150px'
+    height: '150px',
   },
   infoContainer: {
     width: '500px',
     fontFamily: 'Poppins',
-    padding: '60px'
+    padding: '60px',
   },
   itemTitle: {
     fontFamily: "'Poppins', sans-serif",
@@ -79,14 +82,16 @@ export default makeStyles((theme) => ({
   itemDesc: {
     fontFamily: "'Poppins', sans-serif",
     fontWeight: '300',
-    color: 'white'
+    color: 'white',
   },
-
-	spinner: {
+  spinner: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-},
-
+  },
+  movingGradient: {
+    backgroundSize: '200% 200%',
+    animation: 'moveGradient 10s linear infinite'
+  }
 }));

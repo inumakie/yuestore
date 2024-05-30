@@ -99,6 +99,17 @@ export default makeStyles((theme) => ({
     '@media (max-width: 425px)': {
       marginTop: '10px'
     },
-  }
+  },
+  
+  zoomButtons: {
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '10px',
+    '& button': {
+      margin: '0 5px',
+      backgroundColor: 'rgba(255, 255, 255, 0.7) !important', // Add this line
+    },
+}
   
 }));

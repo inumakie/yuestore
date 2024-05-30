@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Typography, Grid, Card, CardMedia, CardContent, CardActions, Button } from '@material-ui/core';
 import CloseIcon from '@mui/icons-material/Close';
@@ -7,14 +7,69 @@ import useStyles from './styles';
 
 const ProductDetails = ( {selectedProduct, handleAddToCart, handleUpdateCartQty, from} ) => {
 
-	const classes = useStyles();
-
 	const [prodQuantity, setProdQuantity] = useState(1);
+	const [zoom, setZoom] = useState(1);
+	const [isDragging, setIsDragging] = useState(false); // Dragging state
+	const [position, setPosition] = useState({ x: 0, y: 0 }); // Position state
+	const [startPosition, setStartPosition] = useState({ x: 0, y: 0 }); // Start position state
+
+	const classes = useStyles();
 
 	const handleProdQuantityUpdate = (operation) => {
 		if (operation === "+") {setProdQuantity(prodQuantity + 1)}
 		else if (operation === "-" && prodQuantity > 1) {setProdQuantity(prodQuantity - 1)}
 	}
+
+	const handleZoomIn = () => {
+		setZoom(prevZoom => Math.min(prevZoom + 0.1, 5)); // Cap the zoom in at 2x
+	};
+	
+	const handleZoomOut = () => {
+		setZoom(prevZoom => Math.max(prevZoom - 0.1, 1)); // Cap the zoom out at 1x (original size)
+	};
+
+
+	const handleMouseDown = (e) => {
+		setIsDragging(true);
+		setStartPosition({ x: e.clientX - position.x, y: e.clientY - position.y });
+	};
+
+	const handleWheel = (e) => {
+		e.preventDefault(); // Prevent default scrolling behavior
+	
+		const delta = e.deltaY; // Get the delta value of the wheel event
+	
+		// Adjust zoom based on scroll direction
+		if (delta > 0) {
+			handleZoomOut();
+		} else {
+			handleZoomIn();
+		}
+	};
+
+	useEffect(() => {
+        window.scrollTo(0, 0);
+		window.addEventListener('wheel', handleWheel);
+
+		const handleMouseMove = (e) => {
+			if (isDragging) {
+				setPosition({ x: e.clientX - startPosition.x, y: e.clientY - startPosition.y });
+			}
+		};
+
+		const handleMouseUp = () => {
+			setIsDragging(false);
+		};
+
+		window.addEventListener('mousemove', handleMouseMove);
+		window.addEventListener('mouseup', handleMouseUp);
+
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('mouseup', handleMouseUp);
+			window.removeEventListener('wheel', handleWheel);
+		};
+    }, [isDragging, startPosition]);
 	
 	return (
 		<Container>
@@ -35,7 +90,14 @@ const ProductDetails = ( {selectedProduct, handleAddToCart, handleUpdateCartQty,
 								image={selectedImg}
 								className={classes.media}
 								component="img"
+								style={{ transform: `scale(${zoom})  translate(${position.x}px, ${position.y}px)`, transition: isDragging ? 'none' : 'transform 0.3s ease-in-out' }}
+								onMouseDown={handleMouseDown}
 							/>
+							<div className={classes.zoomButtons}>
+								<Button onClick={handleZoomIn} variant="outlined">+</Button>
+								<Button onClick={handleZoomOut} variant="outlined">-</Button>
+							</div>
+
 						</Card>
 						<div className={classes.productImages}>
 							{prod.assets.map( (asset) => (

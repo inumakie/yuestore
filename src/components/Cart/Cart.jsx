@@ -5,7 +5,7 @@ import CartItem from './CartItem/CartItem';
 
 import useStyles from './styles';
 
-const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart, handleSelectProduct, setFrom }) => {
+const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart, handleSelectProduct, setFrom, cartLoading, setCartLoading }) => {
 
 	const classes = useStyles();
 
@@ -29,6 +29,8 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 							handleUpdateCartQty={handleUpdateCartQty}
 							handleRemoveFromCart={handleRemoveFromCart}
 							handleSelectProduct={handleSelectProduct}
+							cartLoading={cartLoading}
+							setCartLoading={setCartLoading}
 						/>
 					</Grid>
 				))}

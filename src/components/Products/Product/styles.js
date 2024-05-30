@@ -3,7 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles( () => ({
 
 	root: {
-		maxWidth: '100%'
+		maxWidth: '100%',
+		boxShadow: '0 4px 8px rgba(147, 112, 219, 0.5)',
+		transition: 'box-shadow 0.3s ease-in-out',
+		'&:hover': {
+			boxShadow: '0 8px 16px rgba(147, 112, 219, 0.7)'
+		  },
 	},
 
 	media: {
@@ -12,6 +17,10 @@ export default makeStyles( () => ({
 		marginTop: '20px',
 		padding: '5px',
 		objectFit: 'contain',
+		'&:hover': {
+			transform: 'scale(0.98)',
+			transition: 'transform 0.5s ease-in-out',
+		  },
 	},
 
 	cardActions: {

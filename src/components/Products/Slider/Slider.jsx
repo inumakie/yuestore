@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, CircularProgress } from '@material-ui/core';
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { sliderItems } from './slider-data';
@@ -24,6 +24,14 @@ const Slider = ({ products, filterProd }) => {
             return newLoadingStates;
         });
     };
+
+    useEffect(() => {
+        sliderItems.forEach((item, index) => {
+            const img = new Image();
+            img.src = item.img;
+            img.onload = () => handleImageLoad(index);
+        });
+    }, []);
 
     return (
         <div className={classes.container}>

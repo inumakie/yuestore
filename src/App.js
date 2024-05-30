@@ -19,13 +19,23 @@ const App = () => {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [from, setFrom] = useState("");
 
+	const [cartLoading, setCartLoading] = useState(false);
+
 	//	Fetching functions	//
 
 	const fetchProducts = async () => {
-		const { data } = await commerce.products.list({ include : "assets" });
-		setProducts(data);
-		setAllProducts(data);
-	}
+		const cachedProducts = sessionStorage.getItem('products');
+		if (cachedProducts) {
+		  const productsData = JSON.parse(cachedProducts);
+		  setProducts(productsData);
+		  setAllProducts(productsData);
+		} else {
+		  const { data } = await commerce.products.list({ include: 'assets' });
+		  setProducts(data);
+		  setAllProducts(data);
+		  sessionStorage.setItem('products', JSON.stringify(data));
+		}
+	  }
 
 	const fetchCart = async () => {
 		setCart(await commerce.cart.retrieve());
@@ -96,6 +106,7 @@ const App = () => {
 	}
 
 	const handleUpdateCartQty = async (productId, quantity) => {
+		setCartLoading(true);
 		// Ensure optimisticCart.line_items is defined and is an array
 		const currentLineItems = optimisticCart.line_items || [];
 	
@@ -135,10 +146,12 @@ const App = () => {
 			// On success, update both the cart and optimisticCart states with the response data
 			setCart(response);
 			setOptimisticCart(response);
+			setCartLoading(false);
 		} catch (error) {
 			// On failure, revert the optimisticCart state to the previous cart state
 			setOptimisticCart(cart);
 			console.error('Failed to update cart quantity:', error);
+			setCartLoading(false);
 		}
 	};
 
@@ -248,6 +261,8 @@ const App = () => {
 							handleEmptyCart={handleEmptyCart}
 							handleSelectProduct={handleSelectProduct}
 							setFrom={setFrom}
+							cartLoading={cartLoading}
+							setCartLoading={setCartLoading}
 						/>}
 					/>
 					<Route exact path="/checkout" element={

@@ -8,7 +8,7 @@ export const sliderItems = [
       id: 1,
       img: audio,
       title: "AUDIO",
-      desc: "Audio devices for music listening, recording and streaming.",
+      desc: "High quality & fidelity for listening, recording and streaming.",
       color1: '#654ea3',
       color2: '#eaafc8',
       category: 'audio'

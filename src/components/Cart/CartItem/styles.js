@@ -2,7 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   root: {
-    maxWidth: '100%'
+    maxWidth: '100%',
+    position: 'relative'
   },
   media: {
     width: '100%',
@@ -41,5 +42,11 @@ export default makeStyles(() => ({
     display: '-webkit-box',
     '-webkit-line-clamp': '4',
     '-webkit-box-orient': 'vertical'
+  },
+  loadingSpinner: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
   }
 }));
